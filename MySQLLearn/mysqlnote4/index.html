@@ -24,16 +24,16 @@
     var CONFIG = {"hostname":"lucastrace.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="MySQL note-Three">
+  <meta name="description" content="MySQL note-Four">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysqlnote4">
+<meta property="og:title" content="MySQLnote4">
 <meta property="og:url" content="https://lucastrace.github.io/MySQLLearn/mysqlnote4/index.html">
 <meta property="og:site_name" content="Lucas&#39;s Blog">
-<meta property="og:description" content="MySQL note-Three">
+<meta property="og:description" content="MySQL note-Four">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1131995677,1971778195&fm=26&gp=0.jpg">
 <meta property="article:published_time" content="2020-10-27T01:52:36.000Z">
-<meta property="article:modified_time" content="2020-10-27T13:12:29.623Z">
+<meta property="article:modified_time" content="2020-10-27T13:15:11.856Z">
 <meta property="article:author" content="LucasTrace">
 <meta property="article:tag" content="Blog">
 <meta name="twitter:card" content="summary">
@@ -53,7 +53,7 @@
   };
 </script>
 
-  <title>mysqlnote4 | Lucas's Blog</title>
+  <title>MySQLnote4 | Lucas's Blog</title>
   
 
 
@@ -181,7 +181,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-note-Three"><span class="nav-number">1.</span> <span class="nav-text">MySQL note-Three</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constraint"><span class="nav-number">2.</span> <span class="nav-text">Constraint</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#not-null"><span class="nav-number">2.1.</span> <span class="nav-text">not null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unique"><span class="nav-number">2.2.</span> <span class="nav-text">unique</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Primary-Key"><span class="nav-number">2.3.</span> <span class="nav-text">Primary Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreign-Key"><span class="nav-number">2.4.</span> <span class="nav-text">Foreign Key</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Engine"><span class="nav-number">3.</span> <span class="nav-text">Engine</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM"><span class="nav-number">3.1.</span> <span class="nav-text">MyISAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB"><span class="nav-number">3.2.</span> <span class="nav-text">InnoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MEMORY"><span class="nav-number">3.3.</span> <span class="nav-text">MEMORY</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transaction"><span class="nav-number">4.</span> <span class="nav-text">Transaction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">事务特性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%94%E7%A6%BB%E6%80%A7%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">隔离性：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Index"><span class="nav-number">5.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%A3%80%E7%B4%A2%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">两种检索方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">索引的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E7%B1%BB"><span class="nav-number">5.3.</span> <span class="nav-text">索引分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E4%BD%9C%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">视图作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DBA%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">DBA命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">7.1.</span> <span class="nav-text">导出数据库的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">7.2.</span> <span class="nav-text">导入数据库的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">数据库设计三范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F"><span class="nav-number">8.1.</span> <span class="nav-text">第一范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F"><span class="nav-number">8.2.</span> <span class="nav-text">第二范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">8.3.</span> <span class="nav-text">第三范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E8%AE%BE%E8%AE%A1"><span class="nav-number">8.4.</span> <span class="nav-text">一对一设计</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-note-Four"><span class="nav-number">1.</span> <span class="nav-text">MySQL note-Four</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constraint"><span class="nav-number">2.</span> <span class="nav-text">Constraint</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#not-null"><span class="nav-number">2.1.</span> <span class="nav-text">not null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unique"><span class="nav-number">2.2.</span> <span class="nav-text">unique</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Primary-Key"><span class="nav-number">2.3.</span> <span class="nav-text">Primary Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreign-Key"><span class="nav-number">2.4.</span> <span class="nav-text">Foreign Key</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Engine"><span class="nav-number">3.</span> <span class="nav-text">Engine</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM"><span class="nav-number">3.1.</span> <span class="nav-text">MyISAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB"><span class="nav-number">3.2.</span> <span class="nav-text">InnoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MEMORY"><span class="nav-number">3.3.</span> <span class="nav-text">MEMORY</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transaction"><span class="nav-number">4.</span> <span class="nav-text">Transaction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">事务特性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%94%E7%A6%BB%E6%80%A7%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">隔离性：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Index"><span class="nav-number">5.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%A3%80%E7%B4%A2%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">两种检索方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">索引的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E7%B1%BB"><span class="nav-number">5.3.</span> <span class="nav-text">索引分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E4%BD%9C%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">视图作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DBA%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">DBA命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">7.1.</span> <span class="nav-text">导出数据库的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">7.2.</span> <span class="nav-text">导入数据库的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">数据库设计三范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F"><span class="nav-number">8.1.</span> <span class="nav-text">第一范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F"><span class="nav-number">8.2.</span> <span class="nav-text">第二范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">8.3.</span> <span class="nav-text">第三范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E8%AE%BE%E8%AE%A1"><span class="nav-number">8.4.</span> <span class="nav-text">一对一设计</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -271,7 +271,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          mysqlnote4
+          MySQLnote4
         </h1>
 
         <div class="post-meta-container">
@@ -284,7 +284,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2020-10-27 09:52:36 / Modified: 21:12:29" itemprop="dateCreated datePublished" datetime="2020-10-27T09:52:36+08:00">2020-10-27</time>
+      <time title="Created: 2020-10-27 09:52:36 / Modified: 21:15:11" itemprop="dateCreated datePublished" datetime="2020-10-27T09:52:36+08:00">2020-10-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -329,7 +329,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="MySQL-note-Three"><a href="#MySQL-note-Three" class="headerlink" title="MySQL note-Three"></a><center>MySQL note-Three</center></h1><hr>
+        <h1 id="MySQL-note-Four"><a href="#MySQL-note-Four" class="headerlink" title="MySQL note-Four"></a><center>MySQL note-Four</center></h1><hr>
 <p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1131995677,1971778195&fm=26&gp=0.jpg" alt="img"></p>
 <hr>
 <a id="more"></a>
@@ -437,12 +437,8 @@
 <p>FK+unique</p>
 <hr>
 <center>Spending about three days, I roughly have a comprehensive understanding of MySQL Database!</center>
-
 <center>Hence, that's all for the mysqlnotes~</center>
-
 <center>Keeping going~</center>
-
-
     </div>
 
     
@@ -458,8 +454,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/MySQLLearn/mysqlnote3/" rel="prev" title="MySQLnote">
-                  <i class="fa fa-chevron-left"></i> MySQLnote
+                <a href="/MySQLLearn/mysqlnote3/" rel="prev" title="MySQLnote3">
+                  <i class="fa fa-chevron-left"></i> MySQLnote3
                 </a>
             </div>
             <div class="post-nav-item">
