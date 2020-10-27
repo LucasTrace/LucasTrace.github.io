@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lucastrace.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="MySQL note-Three">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysqlnote4">
+<meta property="og:url" content="https://lucastrace.github.io/MySQLLearn/mysqlnote4/index.html">
+<meta property="og:site_name" content="Lucas&#39;s Blog">
+<meta property="og:description" content="MySQL note-Three">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1131995677,1971778195&fm=26&gp=0.jpg">
+<meta property="article:published_time" content="2020-10-27T01:52:36.000Z">
+<meta property="article:modified_time" content="2020-10-27T13:12:29.623Z">
+<meta property="article:author" content="LucasTrace">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1131995677,1971778195&fm=26&gp=0.jpg">
+
+
+<link rel="canonical" href="https://lucastrace.github.io/MySQLLearn/mysqlnote4/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>mysqlnote4 | Lucas's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucas's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Make a dent in the universe!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-note-Three"><span class="nav-number">1.</span> <span class="nav-text">MySQL note-Three</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constraint"><span class="nav-number">2.</span> <span class="nav-text">Constraint</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#not-null"><span class="nav-number">2.1.</span> <span class="nav-text">not null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unique"><span class="nav-number">2.2.</span> <span class="nav-text">unique</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Primary-Key"><span class="nav-number">2.3.</span> <span class="nav-text">Primary Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreign-Key"><span class="nav-number">2.4.</span> <span class="nav-text">Foreign Key</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Engine"><span class="nav-number">3.</span> <span class="nav-text">Engine</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyISAM"><span class="nav-number">3.1.</span> <span class="nav-text">MyISAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InnoDB"><span class="nav-number">3.2.</span> <span class="nav-text">InnoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MEMORY"><span class="nav-number">3.3.</span> <span class="nav-text">MEMORY</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transaction"><span class="nav-number">4.</span> <span class="nav-text">Transaction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">事务特性：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%94%E7%A6%BB%E6%80%A7%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">隔离性：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Index"><span class="nav-number">5.</span> <span class="nav-text">Index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%A3%80%E7%B4%A2%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">两种检索方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">索引的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E7%B1%BB"><span class="nav-number">5.3.</span> <span class="nav-text">索引分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E4%BD%9C%E7%94%A8"><span class="nav-number">6.1.</span> <span class="nav-text">视图作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DBA%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">DBA命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">7.1.</span> <span class="nav-text">导出数据库的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">7.2.</span> <span class="nav-text">导入数据库的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">数据库设计三范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F"><span class="nav-number">8.1.</span> <span class="nav-text">第一范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F"><span class="nav-number">8.2.</span> <span class="nav-text">第二范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="nav-number">8.3.</span> <span class="nav-text">第三范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E8%AE%BE%E8%AE%A1"><span class="nav-number">8.4.</span> <span class="nav-text">一对一设计</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LucasTrace"
+      src="/images/NextAvatar.jpg">
+  <p class="site-author-name" itemprop="name">LucasTrace</p>
+  <div class="site-description" itemprop="description">Make a dent in the universe!</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lucastrace" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lucastrace" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:381952916@qq.com" title="E-Mail → mailto:381952916@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lucastrace.github.io/MySQLLearn/mysqlnote4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/NextAvatar.jpg">
+      <meta itemprop="name" content="LucasTrace">
+      <meta itemprop="description" content="Make a dent in the universe!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucas's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysqlnote4
+        </h1>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-10-27 09:52:36 / Modified: 21:12:29" itemprop="dateCreated datePublished" datetime="2020-10-27T09:52:36+08:00">2020-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQLLearn/" itemprop="url" rel="index"><span itemprop="name">MySQLLearn</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>12 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="MySQL-note-Three"><a href="#MySQL-note-Three" class="headerlink" title="MySQL note-Three"></a><center>MySQL note-Three</center></h1><hr>
+<p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1131995677,1971778195&fm=26&gp=0.jpg" alt="img"></p>
+<hr>
+<a id="more"></a>
+
+<h1 id="Constraint"><a href="#Constraint" class="headerlink" title="Constraint"></a>Constraint</h1><p>not null  非空约束</p>
+<p>unique  唯一约束</p>
+<p>primary key  PK主键约束（既不能为null 也不能重复）</p>
+<p>foreign key  FK外键约束 。。。</p>
+<p>check   检查约束（Oracle中支持，MySQL目前不支持）</p>
+<h2 id="not-null"><a href="#not-null" class="headerlink" title="not null"></a>not null</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;username不能为空</span><br><span class="line">mysql&gt; create table user(id int,username varchar(255) not null,</span><br><span class="line">    -&gt; password varchar(255));</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line">mysql&gt; insert into user(id,password) values(1,&#39;123&#39;);</span><br><span class="line">ERROR 1364 (HY000): Field &#39;username&#39; doesn’t have a default value</span><br><span class="line">&#x2F;&#x2F;传入username后</span><br><span class="line">mysql&gt; insert into user(id,username,password) values(1,&#39;Tom&#39;,&#39;123&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; select * from user</span><br><span class="line">    -&gt; ;</span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | Tom      | 123      |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h2><p>字段具有唯一性，但可以为null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop table if exists user;</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line">mysql&gt; create table user(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; username varchar(255) unique		&#x2F;&#x2F;列级约束</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into user values(1,&#39;a&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into user values(2,&#39;a&#39;);</span><br><span class="line">ERROR 1062 (23000): Duplicate entry &#39;a&#39; for key &#39;username&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;当username和usercode都重复是才报错</span><br><span class="line">mysql&gt; create table user(id int,username varchar(255),</span><br><span class="line">    -&gt; usercode varchar(255),</span><br><span class="line">    -&gt; unique(usercode,username)		&#x2F;&#x2F;表级约束</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Primary-Key"><a href="#Primary-Key" class="headerlink" title="Primary Key"></a>Primary Key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;id是主键，因为添加了主键约束</span><br><span class="line">mysql&gt; create table user</span><br><span class="line">    -&gt; (id int primary key,</span><br><span class="line">    -&gt; username varchar(255),</span><br><span class="line">    -&gt; email varchar(255)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line">&#x2F;&#x2F;不能重复</span><br><span class="line">mysql&gt; insert into user(id,username,email) values(1,&#39;zs&#39;,&#39;123&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into user(id,username,email) values(1,&#39;lisi&#39;,&#39;123&#39;);</span><br><span class="line">ERROR 1062 (23000): Duplicate entry &#39;1&#39; for key &#39;PRIMARY&#39;</span><br><span class="line">&#x2F;&#x2F;不能为null</span><br><span class="line">mysql&gt; insert into user(username,email) values(&#39;la&#39;,&#39;234&#39;);</span><br><span class="line">ERROR 1364 (HY000): Field &#39;id&#39; doesn&#39;t have a default value</span><br></pre></td></tr></table></figure>
+
+<p>主键的作用：主键值是这行记录在这张表中的唯一标识。</p>
+<p>一张表的主键约束只有一个，按主键字段数量，有单一主键、复合主键（多个字段联合添加一个主键约束）之分；按主键性质，有自然主键（和业务无关的自然数，推荐）、业务主键（银行卡的卡号、身份证的号码，不推荐）之分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user(</span><br><span class="line">    -&gt; id int primary key auto_increment,</span><br><span class="line">    -&gt; username varchar(255)</span><br><span class="line">    -&gt; );</span><br><span class="line">&#x2F;&#x2F;主键字段自增</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br><span class="line">mysql&gt; insert into user (username) values (&#39;abc&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; insert into user (username) values (&#39;abc&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into user (username) values (&#39;abc&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">|  1 | abc      |</span><br><span class="line">|  2 | abc      |</span><br><span class="line">|  3 | abc      |</span><br><span class="line">+----+----------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Foreign-Key"><a href="#Foreign-Key" class="headerlink" title="Foreign Key"></a>Foreign Key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;先删子表再删父表</span><br><span class="line">&#x2F;&#x2F;先创父表再创子表</span><br><span class="line">&#x2F;&#x2F;先添父表再添子表</span><br><span class="line">mysql&gt; create table class(</span><br><span class="line">    -&gt; cno int primary key,</span><br><span class="line">    -&gt; cname varchar(255)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.05 sec)</span><br><span class="line">mysql&gt; create table stu(</span><br><span class="line">    -&gt; sno int,</span><br><span class="line">    -&gt; sname varchar(255),</span><br><span class="line">    -&gt; classno int,</span><br><span class="line">    -&gt; primary key(sno),</span><br><span class="line">    -&gt; foreign key(classno) references class(cno)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line">mysql&gt; insert into class values (101,&#39;xxxxxx&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; insert into class values (102,&#39;yyyyyy&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into stu values (1,&#39;zs1&#39;,101);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into stu values (2,&#39;zs1&#39;,102);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; select * from stu;</span><br><span class="line">+------+-------+---------+</span><br><span class="line">| sno  | sname | classno |</span><br><span class="line">+------+-------+---------+</span><br><span class="line">|    1 | zs1   |     101 |</span><br><span class="line">|    2 | zs1   |     102 |</span><br><span class="line">+------+-------+---------+</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;外键约束下字段数据必须来自约定的表的确定的字段</span><br><span class="line">mysql&gt; insert into stu values (1,&#39;zs1&#39;,103);</span><br><span class="line">ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (&#96;bjpowernode&#96;.&#96;stu&#96;, CONSTRAINT &#96;stu_ibfk_1&#96; FOREIGN KEY (&#96;classno&#96;) REFERENCES &#96;class&#96; (&#96;cno&#96;))</span><br></pre></td></tr></table></figure>
+
+<p>外键字段可以为null</p>
+<p>外键引用的字段不一定是主键约束的字段，但是必须是具有唯一性的字段，因此一般常用主键约束的字段</p>
+<h1 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h1><p>mysql采用的默认存储引擎是InnoDB</p>
+<p>采用的默认字符集是UTF8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;查看当前MySQL支持的存储引擎</span><br><span class="line">mysql&gt; show engines\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">      Engine: FEDERATED</span><br><span class="line">     Support: NO</span><br><span class="line">     Comment: Federated MySQL storage engine</span><br><span class="line">Transactions: NULL</span><br><span class="line">          XA: NULL</span><br><span class="line">  Savepoints: NULL</span><br><span class="line">*************************** 2. row ***************************</span><br><span class="line">      Engine: MRG_MYISAM</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: Collection of identical MyISAM tables</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">*************************** 3. row ***************************</span><br><span class="line">      Engine: MyISAM</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: MyISAM storage engine</span><br><span class="line">Transactions: NO	&#x2F;&#x2F;不支持事务</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">*************************** 4. row ***************************</span><br><span class="line">      Engine: BLACKHOLE</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: &#x2F;dev&#x2F;null storage engine (anything you write to it disappears)</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">*************************** 5. row ***************************</span><br><span class="line">      Engine: CSV</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: CSV storage engine</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">*************************** 6. row ***************************</span><br><span class="line">      Engine: MEMORY</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: Hash based, stored in memory, useful for temporary tables</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">*************************** 7. row ***************************</span><br><span class="line">      Engine: ARCHIVE</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: Archive storage engine</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">*************************** 8. row ***************************</span><br><span class="line">      Engine: InnoDB</span><br><span class="line">     Support: DEFAULT</span><br><span class="line">     Comment: Supports transactions, row-level locking, and foreign keys</span><br><span class="line">Transactions: YES</span><br><span class="line">          XA: YES</span><br><span class="line">  Savepoints: YES</span><br><span class="line">*************************** 9. row ***************************</span><br><span class="line">      Engine: PERFORMANCE_SCHEMA</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: Performance Schema</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br><span class="line">9 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*************************** 3. row ***************************</span><br><span class="line">      Engine: MyISAM</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: MyISAM storage engine</span><br><span class="line">Transactions: NO	&#x2F;&#x2F;不支持事务</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br></pre></td></tr></table></figure>
+
+<p>格式文件 - 存储表结构的定义（mytable.frm）</p>
+<p>数据文件 - 存储表行的内容（mytable.MYD）</p>
+<p>索引文件 - 存储表上的索引（mytable.MYI）</p>
+<p>优点：1.灵活的AUTO_INCREMENT字段处理 2.可被压缩，转换成只读表节约空间</p>
+<p>缺点：1.不支持事务</p>
+<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*************************** 8. row ***************************</span><br><span class="line">      Engine: InnoDB</span><br><span class="line">     Support: DEFAULT</span><br><span class="line">     Comment: Supports transactions, row-level locking, and foreign keys</span><br><span class="line">Transactions: YES</span><br><span class="line">          XA: YES</span><br><span class="line">  Savepoints: YES</span><br></pre></td></tr></table></figure>
+
+<p>表的结构存储在mytable.frm文件中</p>
+<p>数据存储在tablespace中（一种逻辑概念），不能被压缩，或者转换为只读</p>
+<p>优点：1.支持事务、行级锁、外键等，数据安全性最高 2.在MySQL数据库崩溃之后提供自动恢复机制</p>
+<p>InnoDB支持级联删除和级联更新（较危险，不常用）</p>
+<h2 id="MEMORY"><a href="#MEMORY" class="headerlink" title="MEMORY"></a>MEMORY</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*************************** 6. row ***************************</span><br><span class="line">      Engine: MEMORY</span><br><span class="line">     Support: YES</span><br><span class="line">     Comment: Hash based, stored in memory, useful for temporary tables</span><br><span class="line">Transactions: NO</span><br><span class="line">          XA: NO</span><br><span class="line">  Savepoints: NO</span><br></pre></td></tr></table></figure>
+
+<p>曾用名：HEPA</p>
+<p>优点：查询速度最快</p>
+<p>缺点：不支持事务。所有数据和索引都存储在内存中，数据容易丢失。</p>
+<h1 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h1><p>一个事务是一个完整的业务逻辑单元，不可再分（多条DML语句捆绑在一起）</p>
+<p>eg：银行账户转账，必须保证一增一减均执行成功，或者一增一减均执行失败</p>
+<p>和事务相关的语句只有：DML语句（insert delete update）</p>
+<h2 id="事务特性："><a href="#事务特性：" class="headerlink" title="事务特性："></a>事务特性：</h2><p>A 原子性（事务是最小的工作单位，不可再分）</p>
+<p>B 一致性（事务必须保证多条DML语句同时成功或者同时失败）</p>
+<p>C 隔离性（事务A与事务B之间具有隔离）</p>
+<p>D 持久性（最终数据必须持久化到硬盘文件中，事务才算成功结束）</p>
+<h2 id="隔离性："><a href="#隔离性：" class="headerlink" title="隔离性："></a>隔离性：</h2><p>1.read uncommitted 读未提交</p>
+<p>​    对方还未提交，我们当前事务可以读取到对方数据，存在Dirty Read（脏读现象）</p>
+<p>2.read committed 读已提交</p>
+<p>​    这种隔离级别解决了脏读问题，但不可重复读</p>
+<p>3.repeatable read 可重复读</p>
+<p>​    这种隔离级别解决了不可重复读的问题，但读取到的数据是幻想，是备份数据，不是最新的数据</p>
+<p>4.serializable read 序列化读/串行化读</p>
+<p>​    解决了所有的问题，效率低，需要排队</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global transaction isolation level read uncommitted;</span><br></pre></td></tr></table></figure>
+
+<p>Oracle数据库默认隔离级别是：read committed 读已提交</p>
+<p>MySQL数据库默认隔离级别是：repeatable read 可重复读</p>
+<p>并且MySQL中的事务是支持自动提交的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;关闭自动提交机制</span><br><span class="line">mysql&gt; start transaction;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line">&#x2F;&#x2F;使用rollback回滚到上一次提交（自动提交）</span><br><span class="line">mysql&gt; insert into user(username) values (&#39;zs&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; insert into user(username) values (&#39;zs&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; insert into user(username) values (&#39;zs&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">|  1 | zs       |</span><br><span class="line">|  2 | zs       |</span><br><span class="line">|  3 | zs       |</span><br><span class="line">|  4 | zs       |</span><br><span class="line">+----+----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line">mysql&gt; rollback;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">|  1 | zs       |</span><br><span class="line">+----+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">&#x2F;&#x2F;重新添加数据后手动commit，rollback无效</span><br><span class="line">mysql&gt; insert into user(username) values (&#39;zs&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into user(username) values (&#39;zs&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; insert into user(username) values (&#39;zs&#39;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">|  1 | zs       |</span><br><span class="line">|  5 | zs       |</span><br><span class="line">|  6 | zs       |</span><br><span class="line">|  7 | zs       |</span><br><span class="line">+----+----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line">mysql&gt; commit;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">mysql&gt; rollback;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+----------+</span><br><span class="line">| id | username |</span><br><span class="line">+----+----------+</span><br><span class="line">|  1 | zs       |</span><br><span class="line">|  5 | zs       |</span><br><span class="line">|  6 | zs       |</span><br><span class="line">|  7 | zs       |</span><br><span class="line">+----+----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h1><p>index即索引，相当于一本书的目录</p>
+<h2 id="两种检索方式："><a href="#两种检索方式：" class="headerlink" title="两种检索方式："></a>两种检索方式：</h2><p>1.全表扫描 2.根据索引检索（高效率）</p>
+<p>主键和具有unique的字段会自动添加索引，所以根据主键查询效率高。</p>
+<p><strong>使用模糊查询时索引失效</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;查看sql语句的执行计划</span><br><span class="line">mysql&gt; explain select ename,sal from emp where sal&#x3D;5000;</span><br><span class="line">+----+-------------+-------+------+---------------+------+---------+------+------+-------------+</span><br><span class="line">| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra       |</span><br><span class="line">+----+-------------+-------+------+---------------+------+---------+------+------+-------------+</span><br><span class="line">|  1 | SIMPLE      | emp   | ALL  | NULL          | NULL | NULL    | NULL |   14 | Using where |</span><br><span class="line">+----+-------------+-------+------+---------------+------+---------+------+------+-------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建索引</span><br><span class="line">mysql&gt; create index emp_sal_index on emp(sal);</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br><span class="line">&#x2F;&#x2F;执行情况</span><br><span class="line">mysql&gt; explain select ename,sal from emp where sal&#x3D;5000;</span><br><span class="line">+----+-------------+-------+------+---------------+---------------+---------+-------+------+-------+</span><br><span class="line">| id | select_type | table | type | possible_keys | key           | key_len | ref   | rows | Extra |</span><br><span class="line">+----+-------------+-------+------+---------------+---------------+---------+-------+------+-------+</span><br><span class="line">|  1 | SIMPLE      | emp   | ref  | emp_sal_index | emp_sal_index | 9       | const |    1 | NULL  |</span><br><span class="line">+----+-------------+-------+------+---------------+---------------+---------+-------+------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">&#x2F;&#x2F;删除索引</span><br><span class="line">mysql&gt; drop index emp_sal_index on emp;</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
+
+<h2 id="索引的实现原理"><a href="#索引的实现原理" class="headerlink" title="索引的实现原理"></a>索引的实现原理</h2><p>自动排序（可能是硬盘文件也可能是内存）</p>
+<p>自动分区，在检索式首先定位到对应字段数据所在的分区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;eg：找到 ename &#x3D;&#39;SIMTH&#39;</span><br><span class="line">mysql&gt; select ename from emp where ename&#x3D;&#39;SIMTH&#39;</span><br></pre></td></tr></table></figure>
+
+<p>先定位S区，再定位M区，缩短了扫描的数量，进而快速定位到SIMTH</p>
+<p>并且这些对应的分区都有对应的物理地址，通过物理地址定位表中的数据效率最高</p>
+<h2 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h2><p>单一索引 ：给单个字段添加索引</p>
+<p>复合索引 ：给多个字段添加索引</p>
+<p>主键索引 ：主键上会自动添加索引</p>
+<p>唯一索引：有unique约束的字段上会自动添加索引</p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>只有DQL语句才能以视图对象创建</p>
+<p>对视图的增删改查会影响原表数据，但不是通过直接操作原表的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建视图</span><br><span class="line">mysql&gt; create view myview as select empno,ename from emp;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line">&#x2F;&#x2F;删除视图</span><br><span class="line">mysql&gt; drop view myview;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line">mysql&gt; create view myview as select empno,ename from emp;</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line">&#x2F;&#x2F;创建并显示表</span><br><span class="line">mysql&gt; select * from myview;</span><br><span class="line">+-------+--------+</span><br><span class="line">| empno | ename  |</span><br><span class="line">+-------+--------+</span><br><span class="line">|  7369 | SMITH  |</span><br><span class="line">|  7499 | ALLEN  |</span><br><span class="line">|  7521 | WARD   |</span><br><span class="line">|  7566 | JONES  |</span><br><span class="line">|  7654 | MARTIN |</span><br><span class="line">|  7698 | BLAKE  |</span><br><span class="line">|  7782 | CLARK  |</span><br><span class="line">|  7788 | SCOTT  |</span><br><span class="line">|  7839 | KING   |</span><br><span class="line">|  7844 | TURNER |</span><br><span class="line">|  7876 | ADAMS  |</span><br><span class="line">|  7900 | JAMES  |</span><br><span class="line">|  7902 | FORD   |</span><br><span class="line">|  7934 | MILLER |</span><br><span class="line">+-------+--------+</span><br><span class="line">14 rows in set (0.01 sec)</span><br><span class="line">&#x2F;&#x2F;修改视图</span><br><span class="line">mysql&gt; update myview set ename&#x3D;&#39;testview&#39; where ename&#x3D;&#39;ford&#39;;</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line">mysql&gt; select * from myview;</span><br><span class="line">+-------+----------+</span><br><span class="line">| empno | ename    |</span><br><span class="line">+-------+----------+</span><br><span class="line">|  7369 | SMITH    |</span><br><span class="line">|  7499 | ALLEN    |</span><br><span class="line">|  7521 | WARD     |</span><br><span class="line">|  7566 | JONES    |</span><br><span class="line">|  7654 | MARTIN   |</span><br><span class="line">|  7698 | BLAKE    |</span><br><span class="line">|  7782 | CLARK    |</span><br><span class="line">|  7788 | SCOTT    |</span><br><span class="line">|  7839 | KING     |</span><br><span class="line">|  7844 | TURNER   |</span><br><span class="line">|  7876 | ADAMS    |</span><br><span class="line">|  7900 | JAMES    |</span><br><span class="line">|  7902 | testview |</span><br><span class="line">|  7934 | MILLER   |</span><br><span class="line">+-------+----------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br><span class="line">&#x2F;&#x2F;原表也同样改变</span><br><span class="line">mysql&gt; select * from emp;</span><br><span class="line">+-------+----------+-----------+------+------------+---------+---------+--------+</span><br><span class="line">| EMPNO | ENAME    | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |</span><br><span class="line">+-------+----------+-----------+------+------------+---------+---------+--------+</span><br><span class="line">|  7369 | SMITH    | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |</span><br><span class="line">|  7499 | ALLEN    | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |</span><br><span class="line">|  7521 | WARD     | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |</span><br><span class="line">|  7566 | JONES    | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |</span><br><span class="line">|  7654 | MARTIN   | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |</span><br><span class="line">|  7698 | BLAKE    | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |</span><br><span class="line">|  7782 | CLARK    | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |</span><br><span class="line">|  7788 | SCOTT    | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7839 | KING     | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |</span><br><span class="line">|  7844 | TURNER   | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |</span><br><span class="line">|  7876 | ADAMS    | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |</span><br><span class="line">|  7900 | JAMES    | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |</span><br><span class="line">|  7902 | testview | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |</span><br><span class="line">|  7934 | MILLER   | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |</span><br><span class="line">+-------+----------+-----------+------+------------+---------+---------+--------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="视图作用"><a href="#视图作用" class="headerlink" title="视图作用"></a>视图作用</h2><p>视图可以隐藏表的实现细节，保密级别较高的系统，数据库只对外提供相关的视图</p>
+<h1 id="DBA命令"><a href="#DBA命令" class="headerlink" title="DBA命令"></a>DBA命令</h1><h2 id="导出数据库的数据"><a href="#导出数据库的数据" class="headerlink" title="导出数据库的数据"></a>导出数据库的数据</h2><p>直接在Windows的dos命令窗口执行 mysqldump nameofdatabase&gt;D:\XXXX password</p>
+<h2 id="导入数据库的数据"><a href="#导入数据库的数据" class="headerlink" title="导入数据库的数据"></a>导入数据库的数据</h2><p>create database nameofdatabase;</p>
+<p>use nameofdatabase;</p>
+<p>source 拖入.sql文件</p>
+<h1 id="数据库设计三范式"><a href="#数据库设计三范式" class="headerlink" title="数据库设计三范式"></a>数据库设计三范式</h1><p>按照这三个范式，会尽可能地避免数据冗余</p>
+<h2 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h2><p>任何一张表都应该有主键，并且每一个字段原子性不可再分。</p>
+<h2 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h2><p>建立在第一范式的基础上，所有非主键字段，完全依赖主键，不能产生部份依赖。</p>
+<h2 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h2><p>建立在第二范式的基础上，所有非主键字段直接依赖主键字段，不能产生传递依赖。</p>
+<h2 id="一对一设计"><a href="#一对一设计" class="headerlink" title="一对一设计"></a>一对一设计</h2><p>1.主键共享</p>
+<p>A表的主键PK对应字段，是B表中主键的外键PK+FK</p>
+<p>2.外键唯一</p>
+<p>FK+unique</p>
+<hr>
+<center>Spending about three days, I roughly have a comprehensive understanding of MySQL Database!</center>
+
+<center>Hence, that's all for the mysqlnotes~</center>
+
+<center>Keeping going~</center>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MySQLLearn/mysqlnote3/" rel="prev" title="MySQLnote">
+                  <i class="fa fa-chevron-left"></i> MySQLnote
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LucasTrace</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">39k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">35 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
