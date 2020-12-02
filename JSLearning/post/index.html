@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lucastrace.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="JavaScript-note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript">
+<meta property="og:url" content="https://lucastrace.github.io/JSLearning/post/index.html">
+<meta property="og:site_name" content="Lucas&#39;s Blog">
+<meta property="og:description" content="JavaScript-note">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1606931068468&amp;di=398df0b711cb1e1bb474a8cd01cba27f&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.szhulian.com%2FPublic%2Fupload%2Fimages%2F2018-01-04%2F5a4d83d47c321.jpg">
+<meta property="article:published_time" content="2020-12-02T14:52:35.000Z">
+<meta property="article:modified_time" content="2020-12-02T15:01:20.448Z">
+<meta property="article:author" content="LucasTrace">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1606931068468&amp;di=398df0b711cb1e1bb474a8cd01cba27f&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.szhulian.com%2FPublic%2Fupload%2Fimages%2F2018-01-04%2F5a4d83d47c321.jpg">
+
+
+<link rel="canonical" href="https://lucastrace.github.io/JSLearning/post/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>JavaScript | Lucas's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucas's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Make a dent in the universe!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-note"><span class="nav-number">1.</span> <span class="nav-text">JavaScript-note</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LucasTrace"
+      src="/images/NextAvatar.jpg">
+  <p class="site-author-name" itemprop="name">LucasTrace</p>
+  <div class="site-description" itemprop="description">Make a dent in the universe!</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/lucastrace" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;lucastrace" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:381952916@qq.com" title="E-Mail → mailto:381952916@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lucastrace.github.io/JSLearning/post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/NextAvatar.jpg">
+      <meta itemprop="name" content="LucasTrace">
+      <meta itemprop="description" content="Make a dent in the universe!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucas's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript
+        </h1>
+
+        <div class="post-meta-container">
+          
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-12-02 22:52:35 / Modified: 23:01:20" itemprop="dateCreated datePublished" datetime="2020-12-02T22:52:35+08:00">2020-12-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JSLearning/" itemprop="url" rel="index"><span itemprop="name">JSLearning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>7.6k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="JavaScript-note"><a href="#JavaScript-note" class="headerlink" title="JavaScript-note"></a><center>JavaScript-note</center></h1><hr>
+<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1606931068468&amp;di=398df0b711cb1e1bb474a8cd01cba27f&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.szhulian.com%2FPublic%2Fupload%2Fimages%2F2018-01-04%2F5a4d83d47c321.jpg" alt="点击查看源网页" style="zoom:50%;">
+
+
+
+<hr>
+<a id="more"></a>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;!--在HTML中嵌入js语句的第一种方法--&gt;</span><br><span class="line">		&lt;!--需求:页面中有一个按钮,用户点击这个按钮的时候弹出对话框--&gt;</span><br><span class="line">		&lt;!--JavaScript是一种基于事件驱动型的编程语言,依靠事件来触发js代码执行--&gt;</span><br><span class="line">		&lt;!--在js当中任何一个事件都有对应的一个事件句柄.所有的事件句柄都是在事件名称前面添加on--&gt;</span><br><span class="line">		&lt;!--click鼠标单击对应的事件句柄onclick</span><br><span class="line">			dblclick鼠标双击对应的事件句柄ondbclick</span><br><span class="line">		--&gt;</span><br><span class="line">		&lt;!--所有的事件句柄都是以<span class="string">&quot;标签的属性&quot;</span>形式存在--&gt;</span><br><span class="line">		&lt;!--在JS中有一个内置的隐含对象<span class="built_in">window</span>,表示浏览器窗口对象,有一个alert方法,用于弹窗--&gt;</span><br><span class="line">		&lt;!--弹出字符串使用单引号--&gt;</span><br><span class="line">		&lt;!--<span class="built_in">window</span>.可以省略--&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;hello&quot;</span> onclick=<span class="string">&quot;window.alert(&#x27;warning&#x27;)&quot;</span>/&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;hello&quot;</span> onclick=<span class="string">&quot;alert(&#x27;1&#x27;)</span></span><br><span class="line"><span class="string">		alert(&#x27;123&#x27;)&quot;</span>/&gt;</span><br><span class="line">		&lt;!--在HTML中嵌入js语句的第二种方法--&gt;</span><br><span class="line">		&lt;!--脚本块--&gt;</span><br><span class="line">		&lt;!--脚本块可以写多个，且没有位置限制--&gt;</span><br><span class="line">		&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">			<span class="comment">//JS的注释 和Java的注释相同</span></span><br><span class="line">			<span class="comment">//script标签内部的js代码会在页面打开的时候执行，不需要事件的发生，自上而下依次执行</span></span><br><span class="line">			alert(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">			alert(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		&lt;!--在HTML中嵌入js语句的第三种方法--&gt;</span><br><span class="line">		&lt;!--引入外部独立的JS文件--&gt;</span><br><span class="line">		&lt;script src=<span class="string">&quot;js/myjs1.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;!--load事件（在页面元素全部加载完毕后发生）--&gt;</span><br><span class="line">	&lt;body onload=<span class="string">&quot;console.log(&#x27;页面加载完毕&#x27;)&quot;</span>&gt;</span><br><span class="line">		&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">			<span class="keyword">var</span> age,name;</span><br><span class="line">			&lt;!--以下代码表示将数据输出到控制台--&gt;</span><br><span class="line">			<span class="built_in">console</span>.log(age)</span><br><span class="line">			&lt;!--java是一种强类型语言 js是一种弱类型语言--&gt;</span><br><span class="line">			&lt;!--所以<span class="keyword">var</span>中可以存放任意种类的数据--&gt;</span><br><span class="line">			<span class="keyword">var</span> age=<span class="number">10</span>;</span><br><span class="line">			<span class="built_in">console</span>.log(age)</span><br><span class="line">			</span><br><span class="line">			&lt;!--js中的函数--&gt;</span><br><span class="line">			<span class="comment">// function sum(a,b)&#123;</span></span><br><span class="line">				</span><br><span class="line">			<span class="comment">// &#125;</span></span><br><span class="line">			<span class="comment">//不需要指定返回类型和变量类型</span></span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				alert(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">&quot;sum is &quot;</span>+a+b)</span><br><span class="line">			&#125;</span><br><span class="line">			sayhello=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">&quot;welcome&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//调用函数</span></span><br><span class="line">			hello()</span><br><span class="line">			sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">			sayhello()</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		&lt;!--blur事件--&gt;</span><br><span class="line">		blur事件：&lt;input type=<span class="string">&quot;text&quot;</span> onblur=<span class="string">&quot;console.log(&#x27;失去焦点了&#x27;)&quot;</span> /&gt;</span><br><span class="line">		&lt;!--change事件：当下拉列表发生改变时发生--&gt;</span><br><span class="line">		&lt;select name=<span class="string">&quot;age&quot;</span> onchange=<span class="string">&quot;console.log(&#x27;发生改变&#x27;)&quot;</span>&gt;</span><br><span class="line">			&lt;option value=<span class="string">&quot;1&quot;</span>&gt;<span class="number">10</span>&lt;/option&gt;</span><br><span class="line">			&lt;option value=<span class="string">&quot;2&quot;</span>&gt;<span class="number">20</span>&lt;/option&gt;</span><br><span class="line">		&lt;/select&gt;</span><br><span class="line">		&lt;br /&gt;</span><br><span class="line">		&lt;!--dblclick事件--&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;double&quot;</span> ondblclick=<span class="string">&quot;console.log(&#x27;double click&#x27;)&quot;</span> /&gt;</span><br><span class="line">		&lt;!--focus事件--&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;text&quot;</span> onfocus=<span class="string">&quot;console.log(&#x27;获得焦点&#x27;)&quot;</span> /&gt;</span><br><span class="line">		&lt;!--keydown和keyup事件--&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;text&quot;</span> onkeydown=<span class="string">&quot;console.log(&#x27;键盘摁下&#x27;)&quot;</span> onkeyup=<span class="string">&quot;console.log(&#x27;键盘弹起&#x27;)&quot;</span> /&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;!--脚本块--&gt;</span><br><span class="line">		&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">getDiv</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="comment">// document对象也是JS内置的对象 全部小写 可以直接拿来使用</span></span><br><span class="line">				<span class="comment">// document代表浏览器窗口中的网页（文档）</span></span><br><span class="line">				<span class="comment">// 这个文档被称为DOM树，树上有很多节点，每一个节点都有ID属性</span></span><br><span class="line">				<span class="comment">//获取DOM树上的节点，可以根据id访问</span></span><br><span class="line">				<span class="keyword">var</span> mydivele=<span class="built_in">document</span>.getElementById(<span class="string">&quot;mydiv&quot;</span>)</span><br><span class="line">				&lt;!--innerHTML是一个非常重要的属性 它可以获取也可以设置元素内部的内容--&gt;</span><br><span class="line">				<span class="built_in">console</span>.log(mydivele.innerHTML)</span><br><span class="line">				<span class="keyword">var</span> mydiv2ele=<span class="built_in">document</span>.getElementById(<span class="string">&quot;mydiv2&quot;</span>)</span><br><span class="line">				mydiv2ele.innerHTML=mydivele.innerHTML</span><br><span class="line">				&lt;!--innerHTML和innerTEXT的区别--&gt;</span><br><span class="line">				<span class="comment">//innerHTML会将后面的字符串当作一段HTML代码解释并执行，并最终呈现效果</span></span><br><span class="line">				<span class="comment">//innerTEXT即使后面是一段HTML代码，也只会将双引号内的内容理解为一段文本</span></span><br><span class="line">				mydivele.innerHTML=<span class="string">&quot;&lt;font color=&#x27;#FF0000&#x27;&gt;修改&lt;/font&gt;&quot;</span></span><br><span class="line">				<span class="comment">//mydivele.innerText=&quot;&lt;font color=&#x27;#FF0000&#x27;&gt;修改&lt;/font&gt;&quot;</span></span><br><span class="line">				<span class="keyword">var</span> usernameele=<span class="built_in">document</span>.getElementById(<span class="string">&quot;username&quot;</span>)</span><br><span class="line">				&lt;!--获取文本框里的输入值 即value属性--&gt;</span><br><span class="line">				<span class="built_in">console</span>.log(usernameele.value)</span><br><span class="line">				&lt;!--修改type属性--&gt;</span><br><span class="line">				usernameele.type=<span class="string">&quot;checkbox&quot;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		&lt;!--获取div节点对象--&gt;</span><br><span class="line">		&lt;div id=<span class="string">&quot;mydiv&quot;</span>&gt;hello world&lt;/div&gt;</span><br><span class="line">		&lt;div id=<span class="string">&quot;mydiv2&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;username&quot;</span> /&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;获取div节点元素&quot;</span> onclick=<span class="string">&quot;getDiv()&quot;</span>/&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body onload=<span class="string">&quot;bindclick()&quot;</span>&gt;</span><br><span class="line">		&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">bindclick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">var</span> hhabits=<span class="built_in">document</span>.getElementsByName(<span class="string">&quot;habit&quot;</span>)</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;hhabits.length;i++)&#123;</span><br><span class="line">					hhabits[i].onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">						<span class="comment">//当总数和选中的总数量相等的时候 第一个复选框选中</span></span><br><span class="line">						<span class="comment">//获取选中数量</span></span><br><span class="line">						<span class="keyword">var</span> checkcount=<span class="number">0</span></span><br><span class="line">						<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;hhabits.length;i++)&#123;</span><br><span class="line">							<span class="keyword">if</span>(hhabits[i].checked)&#123;</span><br><span class="line">								checkcount++</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span>(hhabits.length==checkcount)&#123;</span><br><span class="line">						<span class="built_in">document</span>.getElementById(<span class="string">&quot;first&quot;</span>).checked=<span class="literal">true</span></span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="built_in">document</span>.getElementById(<span class="string">&quot;first&quot;</span>).checked=<span class="literal">false</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">checkall</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				&lt;!--获取第一个复选框--&gt;</span><br><span class="line">				<span class="keyword">var</span> fir=<span class="built_in">document</span>.getElementById(<span class="string">&quot;first&quot;</span>)</span><br><span class="line">				&lt;!--获取第一个复选框的访问状态--&gt;</span><br><span class="line">				<span class="keyword">if</span>(fir.checked)&#123;</span><br><span class="line">					&lt;!--全选--&gt;</span><br><span class="line">					<span class="comment">//通过name获取一组checkbox  habits为一个集合</span></span><br><span class="line">					<span class="keyword">var</span> habits=<span class="built_in">document</span>.getElementsByName(<span class="string">&quot;habit&quot;</span>)</span><br><span class="line">					<span class="comment">//遍历habits集合 设置全选</span></span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;habits.length;i++)&#123;</span><br><span class="line">						habits[i].checked=<span class="literal">true</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">var</span> habits=<span class="built_in">document</span>.getElementsByName(<span class="string">&quot;habit&quot;</span>)</span><br><span class="line">					<span class="comment">//遍历habits集合 取消全选</span></span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;habits.length;i++)&#123;</span><br><span class="line">						habits[i].checked=<span class="literal">false</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">checkallnew</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">var</span> fir=<span class="built_in">document</span>.getElementById(<span class="string">&quot;first&quot;</span>)</span><br><span class="line">				<span class="keyword">var</span> habits=<span class="built_in">document</span>.getElementsByName(<span class="string">&quot;habit&quot;</span>)</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;habits.length;i++)&#123;</span><br><span class="line">					habits[i].checked=fir.checked</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;checkbox&quot;</span> id=<span class="string">&quot;first&quot;</span> onclick=<span class="string">&quot;checkallnew()&quot;</span>/&gt;全选&lt;br/&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;habit&quot;</span>/&gt;<span class="number">1</span>&lt;br/&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;habit&quot;</span>/&gt;<span class="number">2</span>&lt;br/&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;habit&quot;</span>/&gt;<span class="number">3</span>&lt;br/&gt;</span><br><span class="line">		&lt;input type=<span class="string">&quot;checkbox&quot;</span> name=<span class="string">&quot;habit&quot;</span>/&gt;<span class="number">4</span>&lt;br/&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">checkname</span>(<span class="params">username</span>)</span>&#123;</span><br><span class="line">				username=username.trim()</span><br><span class="line">				<span class="keyword">if</span>(username==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">					<span class="keyword">var</span> nameError=<span class="built_in">document</span>.getElementById(<span class="string">&quot;nameError&quot;</span>)</span><br><span class="line">					nameError.innerHTML=<span class="string">&quot;用户名不能为空&quot;</span></span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(username.length&lt;<span class="number">3</span>||username.length&gt;<span class="number">10</span>)&#123;</span><br><span class="line">						<span class="keyword">var</span> nameError=<span class="built_in">document</span>.getElementById(<span class="string">&quot;nameError&quot;</span>)</span><br><span class="line">						nameError.innerHTML=<span class="string">&quot;用户名长度非法[3~10]&quot;</span></span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						<span class="keyword">var</span> regExp=<span class="regexp">/^[0-9a-zA-Z]+$/</span></span><br><span class="line">						<span class="keyword">var</span> pass=regExp.test(username)</span><br><span class="line">						<span class="keyword">if</span>(pass)&#123;</span><br><span class="line">							</span><br><span class="line">						&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">							<span class="keyword">var</span> nameError=<span class="built_in">document</span>.getElementById(<span class="string">&quot;nameError&quot;</span>)</span><br><span class="line">							nameError.innerHTML=<span class="string">&quot;用户名只能包含数字、字母&quot;</span></span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="function"><span class="keyword">function</span> <span class="title">clearerror</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">var</span> nameError=<span class="built_in">document</span>.getElementById(<span class="string">&quot;nameError&quot;</span>)</span><br><span class="line">				nameError.innerHTML=<span class="string">&quot;&quot;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">		&lt;form action=<span class="string">&quot;http://localhost:&quot;</span> method=<span class="string">&quot;get&quot;</span>&gt;</span><br><span class="line">			用户名&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span> id=<span class="string">&quot;username&quot;</span> onblur=<span class="string">&quot;checkname(this.value)&quot;</span> onfocus=<span class="string">&quot;clearerror()&quot;</span>/&gt;</span><br><span class="line">			&lt;span id=<span class="string">&quot;nameError&quot;</span> style=<span class="string">&quot;color: #FF0000;font-size: 0.75rem;&quot;</span>&gt;&lt;/span&gt;</span><br><span class="line">			&lt;br /&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;提交&quot;</span>/&gt;</span><br><span class="line">		&lt;/form&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blog/" rel="tag"># Blog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/CSSLearning/CSS/" rel="prev" title="CSS">
+                  <i class="fa fa-chevron-left"></i> CSS
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/JSLearning/CCart/" rel="next" title="Cart">
+                  Cart <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LucasTrace</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">76k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:09</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
